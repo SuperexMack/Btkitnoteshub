@@ -27,7 +27,7 @@ export function Navbar() {
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Home</li></Link>
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contact</li></Link>
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">My Profile</li></Link>
-          <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contribute</li></Link>
+          <Link href={"/addnotes"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contribute</li></Link>
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Notes Section</li></Link>
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Signup</li></Link>
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Login</li></Link>
@@ -38,7 +38,7 @@ export function Navbar() {
             <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Home</li></Link>
             <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contact</li></Link>
             <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">My Profile</li></Link>
-            <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contribute</li></Link>
+            <Link href={"/addnotes"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contribute</li></Link>
             <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Notes Section</li></Link>
             <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Signup</li></Link>
             <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Login</li></Link>
