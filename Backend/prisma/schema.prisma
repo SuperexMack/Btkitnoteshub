@@ -21,7 +21,10 @@ model User{
 }
 
 model pdfFolder{
-  int Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
+  title String
+  summary String
+  year String
   fileo String
   author User @relation(fields: [authorId] , references: [id])
   authorId Int

@@ -9,13 +9,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import googleImage from "../googleimg.png";
 
-export default function Signup() {
+export default function Signin() {
   const [isLoading, setIsLoading] = useState(false);
 
   const AuthenticatUser = async (credentialResponse) => {
     setIsLoading(true);
     try {
-      const response = await axios.post("http://localhost:2000/v1/signup", {
+      const response = await axios.post("http://localhost:2000/v1/signin", {
         googletoken: credentialResponse.credential
       });
 
@@ -70,7 +70,7 @@ export default function Signup() {
           <div className="mt-6 text-center">
             <Link href="/Signin" className="text-purple-600 hover:text-pink-600 transition-colors duration-300 font-semibold"
             >
-              Already have an account? Log in
+              Don't have an account? Signup
             </Link>
           </div>
         </div>
