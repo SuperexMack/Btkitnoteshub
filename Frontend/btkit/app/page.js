@@ -23,7 +23,7 @@ export default function Home() {
             <h1 className="font-bold text-[40px] sm:text-[60px] md:text-[80px] lg:text-[100px] text-center">
               Welcome to the{" "}
               <span className="bg-gradient-to-r from-violet-700 via-purple-700 to-orange-500 bg-clip-text text-transparent">
-                Notes Hub
+                Online book
               </span>{" "}
               of Btkit
             </h1>

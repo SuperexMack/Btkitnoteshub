@@ -31,7 +31,7 @@ export default function() {
 
     const addData = async()=>{
         let getToken = localStorage.getItem("authorization")
-        axios.post("http://localhost:2000/v1/addData/postdata" , {
+        await axios.post("http://localhost:2000/v1/addData/postdata" , {
             title,
             summary,
             year,
