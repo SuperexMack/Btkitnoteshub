@@ -26,22 +26,22 @@ export function Navbar() {
         <div className="hidden md:flex space-x-8 absolute right-[10%] list-none">
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Home</li></Link>
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contact</li></Link>
-          <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">My Profile</li></Link>
+          <Link href={"/myprofile"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">My Profile</li></Link>
           <Link href={"/addnotes"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contribute</li></Link>
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Notes Section</li></Link>
-          <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Signup</li></Link>
-          <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Login</li></Link>
+          <Link href={"/Signup"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Signup</li></Link>
+          <Link href={"/Signin"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Login</li></Link>
         </div>
 
         <div className={`fixed md:hidden top-[100px] right-0 h-screen w-full bg-slate-100 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           <div className="flex flex-col items-center space-y-8 pt-8 list-none">
             <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Home</li></Link>
             <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contact</li></Link>
-            <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">My Profile</li></Link>
+            <Link href={"/myprofile"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">My Profile</li></Link>
             <Link href={"/addnotes"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contribute</li></Link>
             <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Notes Section</li></Link>
-            <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Signup</li></Link>
-            <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Login</li></Link>
+            <Link href={"/Signup"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Signup</li></Link>
+            <Link href={"/Signin"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Login</li></Link>
           </div>
         </div>
       </div>

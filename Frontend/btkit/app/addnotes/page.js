@@ -1,6 +1,7 @@
 "use client"
 import { Upload, Sparkles } from 'lucide-react';
 import { useRef } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function() {
     const myRef = useRef(null)
@@ -67,6 +68,7 @@ export default function() {
                 </div>
             </div>
         </div>
+        <ToastContainer />
         </>
     );
 }
