@@ -34,11 +34,27 @@ router.post("/postdaily" ,middleware,async(req,res)=>{
 
     const pdfUrl = uploadResult.secure_url
 
+    let currentDate = new Date();
+    let changeDate = currentDate.toISOString().slice(0,10)
+
+
+    
+
     try{
+    let getUser = await Prisma.user.findFirst({
+        where : {
+            id:getverifcationData
+        }
+    })
+   
+    let getUserName = getUser.username
+
     await Prisma.userPost.create({
         data:{
             title,
             postPhoto:pdfUrl,
+            postedon: changeDate,
+            postedBy : getUserName,
             postId : getverifcationData
         }
     })

@@ -36,6 +36,8 @@ model userPost{
   id Int @id @default(autoincrement())
   title String
   postPhoto String
+  postedon String
+  postedBy String
   authorofpost User @relation(fields: [postId] ,references: [id])
   postId Int
 }

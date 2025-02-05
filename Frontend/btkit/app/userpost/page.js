@@ -63,11 +63,11 @@ export default function() {
     return (
         <>
         {loading ? (
-          <div className="flex justify-center items-center h-screen w-full">
-            <div className="w-[100px] h-[100px] border-4 border-blue-600 animate-spin rounded-3xl">
-               
-            </div>
-          </div>
+           <div className="flex justify-center items-center h-screen w-full">
+           <div className="w-[70px] h-[70px]  border-4 border-blue-600 animate-spin rounded-3xl">
+              
+           </div>
+         </div>
         ) : (
             <>
            <div className="w-full  min-h-screen flex flex-col justify-center items-center bg-gray-50 p-4">

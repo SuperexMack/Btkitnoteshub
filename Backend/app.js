@@ -5,6 +5,7 @@ const PORT = process.env.PORT
 const UserData = require("./Controllers/Users")
 const fileData = require("./Controllers/Data")
 const postUser = require("./Controllers/Posts")
+const alldata = require("./Controllers/getpostdata")
 const cors = require("cors")
 
 app.use(cors({
@@ -18,6 +19,7 @@ app.use(express.json())
 app.use("/v1" , UserData)
 app.use("/v1/addData" , fileData)
 app.use("/v1/postkaro" , postUser)
+app.use("/v1/post" , alldata)
 app.get("/", (req,res)=>{
     return res.json({msg : "Welcome to the v1 of the btkit website"});
 })
