@@ -1,11 +1,31 @@
 "use client"
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { ToastContainer, toast } from 'react-toastify';
+import { useRouter } from "next/router";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [check,setCheck] =  useState(false)
+
+  // const router = useRouter()
+
+  useEffect(()=>{
+    let checkLocalStorage = localStorage.getItem("authorization")
+
+    if(checkLocalStorage && checkLocalStorage !== undefined) setCheck(true) 
+  },[])
+
+
+  const logout = ()=>{
+    localStorage.removeItem("authorization")
+    toast.success("Successfully logged out")
+
+  }
+  
+  
 
   return (
     <>
@@ -30,8 +50,15 @@ export function Navbar() {
           <Link href={"/feed"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Posts Section</li></Link>
           <Link href={"/addnotes"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contribute</li></Link>
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Notes Section</li></Link>
+          {check ? (
+          <li onClick={logout} className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Logout</li>
+          ) :(
+            <>
           <Link href={"/Signup"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Signup</li></Link>
           <Link href={"/Signin"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Login</li></Link>
+          </>
+          )  
+        }
         </div>
 
         <div className={`fixed md:hidden top-[100px] right-0 h-screen w-full bg-slate-100 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
@@ -46,6 +73,7 @@ export function Navbar() {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </>
   );
 }
