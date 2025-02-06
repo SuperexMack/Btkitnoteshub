@@ -41,16 +41,16 @@ export default function Home() {
             <h1 className="mt-[50px] font-bold text-[23px] text-center text-slate-500">In case u wanna connect with developer</h1>
             <div className="flex space-y-4 flex-col w-full">
              <div className="w-full  flex justify-around items-center mt-[40px]">
-                 <span><Github className="h-[60px] w-[60px]  cursor-pointer animate-bounce text-purple-700"></Github></span>
-                 <span><Linkedin className="h-[60px] w-[60px] cursor-pointer animate-bounce text-blue-800"></Linkedin></span>
+                 <span><Github className="h-[50px] w-[50px]  cursor-pointer animate-bounce text-purple-700"></Github></span>
+                 <span><Linkedin className="h-[40px] w-[40px] cursor-pointer animate-bounce text-blue-800"></Linkedin></span>
              </div>
              <div className="w-full  flex space-x-24 justify-center items-center mt-[40px]">
-                 <span><Instagram className="h-[60px] w-[60px] cursor-pointer animate-bounce text-pink-600"></Instagram></span>
-                 <span><Twitter className="h-[60px] w-[60px] cursor-pointer animate-bounce text-green-800"></Twitter></span>
+                 <span><Instagram className="h-[50px] w-[50px] cursor-pointer animate-bounce text-pink-600"></Instagram></span>
+                 <span><Twitter className="h-[50px] w-[50px] cursor-pointer animate-bounce text-green-800"></Twitter></span>
              </div>
             </div>
-        </div>
-      
+          </div>
+        
         </div>
     </div>
     </>
