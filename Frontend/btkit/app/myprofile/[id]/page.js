@@ -15,6 +15,9 @@ export default function Profile() {
   const [loading,setLoading] = useState(false)
   const [username,setUsername] = useState("")
   const [email,setEmail] = useState("")
+  const [peopleFollowme , setPeoplefollowme] = useState("")
+  const [peopleiamfollowing,setiamfollowing] = useState("")
+  const [fans,setFans] = useState([])
 
   useEffect(() => {
     const userInfo = async () => {
@@ -36,72 +39,100 @@ export default function Profile() {
     userInfo()
   }, [id])
 
+
+  const getFans = async()=>{
+    await axios.post(`http://localhost:2000/v1/fans/countFollowers` , {
+      id
+    })
+    .then((response)=>{
+      setPeoplefollowme(response.data.msg.followedby)
+      setiamfollowing(response.data.msg.followto)
+      console.log(response.data.msg.followedby)
+  console.log(response.data.msg.followto)
+
+    })
+    .catch((error)=>{
+      console.log("There is some error while finding fans")
+    })
+  }
+
+
+  useState(()=>{
+    getFans()
+  },[peopleFollowme,peopleiamfollowing])
+
   return (
     <>
     {loading ? (
       <div className="flex justify-center items-center h-screen w-full">
-           <div className="w-[70px] h-[70px]  border-4 border-blue-600 animate-spin rounded-3xl">
+           <div className="w-[70px] h-[70px] border-4 border-t-white border-purple-600 animate-spin rounded-full">
               
            </div>
          </div>
     ) : (
       <>
-       <div className="w-full min-h-screen flex flex-col items-center">
-        <div className="h-auto p-3 w-full mt-[150px] flex flex-col space-y-3">
-          <div className="w-full h-auto flex items-center justify-center sm:justify-center">
-            <div className="w-full p-2 space-x-8 flex sm:justify-center sm:items-center">
-              <div className="h-full w-[70px] sm:w-[100px]">
-                <Image src={google} alt="user_image" className="w-full h-full"></Image>
-              </div>
-              <div className="flex justify-center items-center sm:w-[40%] sm:space-x-9 sm:relative sm:left-5">
-                <div className="flex space-x-3 sm:space-x-8">
-                  <div className="flex flex-col space-y-2">
-                    <h1 className="font-bold sm:text-[30px]">0</h1>
-                    <p className="font-normal sm:text-[25px]">posts</p>
-                  </div>
-
-                  <div className="flex flex-col space-y-2">
-                    <h1 className="font-bold sm:text-[30px]">19</h1>
-                    <p className="font-normal sm:text-[25px]">followers</p>
-                  </div>
-
-                  <div className="flex flex-col space-y-2">
-                    <h1 className="font-bold sm:text-[30px]">20</h1>
-                    <p className="font-normal sm:text-[25px]">following</p>
-                  </div>
+       <div className="bg-gray-50 min-h-screen w-full">
+        <div className="container mx-auto px-4 py-8">
+          <div className="bg-white shadow-xl rounded-2xl overflow-hidden max-w-2xl mx-auto">
+            
+            <div className="bg-gradient-to-r from-purple-500 to-indigo-600 h-32 relative">
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+                <div className="w-32 h-32 rounded-full  overflow-hidden">
+                  <Image src={google} alt="Profile" className="w-full h-full object-cover" />
                 </div>
+              </div>
+            </div>
+
+            
+            <div className="pt-20 text-center">
+              <h1 className="text-3xl font-bold text-gray-800">{username}</h1>
+              <p className="text-gray-500 mt-2">{email}</p>
+
+              
+              <div className="flex justify-center space-x-8 mt-6">
+                <div className="text-center">
+                  <span className="block text-2xl font-bold text-gray-800">0</span>
+                  <span className="text-gray-500">Posts</span>
+                </div>
+                <div className="text-center">
+                  <span className="block text-2xl font-bold text-gray-800">{peopleFollowme}</span>
+                  <span className="text-gray-500">Followers</span>
+                </div>
+                <div className="text-center">
+                  <span className="block text-2xl font-bold text-gray-800">{peopleiamfollowing}</span>
+                  <span className="text-gray-500">Following</span>
+                </div>
+              </div>
+
+             
+              <div className="flex justify-center space-x-4 mt-6 pb-6">
+                <button className="bg-gray-200 text-purple-600 px-4 py-2 rounded-lg hover:bg-gray-300 transition">
+                  Edit Profile
+                </button>
+                <button className="bg-gray-200 text-purple-600 px-4 py-2 rounded-lg hover:bg-gray-300 transition">
+                  Share Profile
+                </button>
+              </div>
+
+              
+              <div className="px-6 pb-8">
+                <button className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
+                  Follow
+                </button>
               </div>
             </div>
           </div>
 
          
-          <div className="w-full h-auto flex flex-col items-center space-y-2">
-            <h1 className="text-center text-[25px] font-bold sm:text-[30px]">{username}</h1>
-            <p className="text-center text-[20px] text-gray-600 sm:text-[25px]">{email}</p>
-          </div>
-
-          <div className="w-full h-auto flex space-y-3 flex-col">
-            <div className="w-full h-auto p-2">
-              <div className="w-full h-auto p-2 flex justify-around items-center">
-                <button className="bg-slate-200 text-purple-600 shadow-lg hover:cursor-pointer p-1 rounded-md font-bold md:text-[25px]">Edit Profile</button>
-                <button className="bg-slate-200 text-purple-600 shadow-lg hover:cursor-pointer p-1 rounded-md font-bold md:text-[25px]">Share profile</button>
+          <div className="max-w-2xl mx-auto mt-8 bg-white shadow-lg rounded-2xl p-6">
+            <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Your Contributions</h2>
+            
+            <div className="space-y-4">
+              <div className="bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">
+                <h3 className="text-center">Title: This side Mack Walker and I am very happy today</h3>
               </div>
-
-              <div className="flex justify-center items-center">
-                <button className="p-2 bg-blue-700 w-[200px] mt-2 text-[20px] text-white rounded-md sm:text-[30px] sm:w-[300px] sm:p-1">Follow</button>
-              </div>
-            </div>
-          </div>
-
-          <div className="w-full h-auto flex flex-col items-center">
-            <h1 className="text-center mt-5 text-[25px] font-medium sm:text-[30px]">Your contributions</h1>
-            <div className="w-full flex flex-col items-center space-y-7">
-              <div className="w-[90%] p-3">
-                <h1 className="text-center">Title: This side Mack Walker and I am very happy today</h1>
-              </div>
-
-              <div className="w-[90%] p-3">
-                <h1 className="text-center">Title: This side Mack Walker and I am very happy today</h1>
+              <div className="bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">
+                <h3 className="text-center">Title: This side Mack Walker and I am very happy today</h3>
               </div>
             </div>
           </div>

@@ -58,8 +58,8 @@ router.post("/getFollowers" , async(req,res)=>{
 // checking Total followers of a particular user
 
 router.post("/countFollowers" , async(req,res)=>{
-    let checkFollowers = req.body.id
-    let howmuchfollowing = req.body.id
+    let checkFollowers = parseInt(req.body.id)
+    let howmuchfollowing = parseInt(req.body.id)
     try{
         let allUsers = await Prisma.fans.findMany({
             where:{

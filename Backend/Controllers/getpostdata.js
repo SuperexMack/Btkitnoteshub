@@ -4,9 +4,10 @@ const express = require("express")
 const router = express.Router()
 
 router.get("/getalldata" , async(req,res)=>{
-    let postdata = await Prisma.userPost.findMany()
+    
     
     try{
+        let postdata = await Prisma.userPost.findMany()
         return res.json({
             alldata : postdata
         })

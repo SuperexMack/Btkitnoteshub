@@ -1,49 +1,58 @@
 import Image from "next/image";
-
+import { ArrowRight } from 'lucide-react';
+import newSocial from "./newSocial.png"
+import { Github } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
+import { Instagram } from 'lucide-react';
+import { Twitter } from 'lucide-react';
 export default function Home() {
   return (
     <>
-      <div className="w-full min-h-screen flex flex-col">
-        <div className="absolute inset-0 w-full h-full">
-          <div className="h-full w-full grid grid-cols-[repeat(24,1fr)] gap-1 md:gap-2">
-            {Array.from({ length: 24 }).map((_, i) => (
-              <div key={i} className="border-r border-gray-800/40 h-full"></div>
-            ))}
+    <div className="w-full min-h-screen flex flex-col">
+        <div className="w-full h-auto mt-[150px] flex flex-col text-center  space-y-8 items-center">
+          <div className="">
+          <button className="font-bold bg-purple-200 text-purple-400 p-2 text-[15px] rounded-xl duration-300 hover:text-violet-500">Introducing BTKIT Springs</button>
           </div>
-          <div className="absolute inset-0">
-            <div className="h-full w-full grid grid-rows-[repeat(24,1fr)] gap-1 md:gap-2">
-              {Array.from({ length: 24 }).map((_, i) => (
-                <div key={i} className="border-b border-gray-800/40 w-full"></div>
-              ))}
+          
+          <div className="w-[80%] flex justify-center items-center">
+            <h1 className="text-[40px] text-center font-bold font-(cursive)">A social media platform for <span className="text-purple-600">BTKIT students</span></h1>
+          </div>
+
+          <div className="w-[80%]">
+            <p className="text-center text-[20px] font-medium text-slate-500">Welcome to the platform --- Share notes , 
+            Follow each other , post your photos,
+            Comment on each other post. forget other social
+            media and use BTKIT Springs 
+              </p>
+          </div>
+
+          <div className="w-full flex justify-center items-center ">
+            <div className="space-x-4 bg-purple-600 flex p-2 w-[70%] justify-center mt-[40px] items-center rounded-2xl transition-transform duration-300 hover:scale-75">
+            <button className="text-white font-bold text-[20px]">Explore</button>
+            <ArrowRight className="text-[20px] font-bold text-white"></ArrowRight>
             </div>
           </div>
+
+          <div className="w-[80%] h-[200px]">
+              <Image src={newSocial} alt="media_icon"></Image>
+          </div>
+
+          <div className="w-full h-auto flex flex-col items-center">
+            <h1 className="mt-[50px] font-bold text-[23px] text-center text-slate-500">In case u wanna connect with developer</h1>
+            <div className="flex space-y-4 flex-col w-full">
+             <div className="w-full  flex justify-around items-center mt-[40px]">
+                 <span><Github className="h-[60px] w-[60px]  cursor-pointer animate-bounce text-purple-700"></Github></span>
+                 <span><Linkedin className="h-[60px] w-[60px] cursor-pointer animate-bounce text-blue-800"></Linkedin></span>
+             </div>
+             <div className="w-full  flex space-x-24 justify-center items-center mt-[40px]">
+                 <span><Instagram className="h-[60px] w-[60px] cursor-pointer animate-bounce text-pink-600"></Instagram></span>
+                 <span><Twitter className="h-[60px] w-[60px] cursor-pointer animate-bounce text-green-800"></Twitter></span>
+             </div>
+            </div>
         </div>
-        <div className="w-full min-h-[500px] md:h-[700px] mt-[130px] md:mt-[150px] flex flex-col justify-center items-center space-y-4 md:space-y-8 px-4 md:px-0">
-          <div className="w-full md:w-[70%] p-2 md:p-3">
-            <h1 className="font-bold text-[40px] sm:text-[60px] md:text-[80px] lg:text-[100px] text-center">
-              Welcome to the{" "}
-              <span className="bg-gradient-to-r from-violet-700 via-purple-700 to-orange-500 bg-clip-text text-transparent">
-                Online book
-              </span>{" "}
-              of Btkit
-            </h1>
-          </div>
-          <div className="w-full sm:w-[80%] md:w-[50%] px-4 md:px-0">
-            <p className="text-center text-base md:text-[20px] font-semibold">
-              This site will provide you with the notes of each and every subject
-              uploaded by the college student and faculty and excel in your exams
-            </p>
-          </div>
-          <div className="w-full sm:w-[80%] md:w-[50%] flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 px-4 md:px-0">
-            <button className="bg-purple-700 z-10 transition-transform duration-300 hover:scale-110 p-2 w-full sm:w-[30%] font-bold text-xl md:text-[30px] rounded-lg text-white">
-              Explore
-            </button>
-            <button className="p-2 bg-slate-700 z-10 transition-transform duration-300 hover:scale-110 w-full sm:w-[30%] text-xl md:text-[30px] border-2 border-red-600 text-slate-300 font-bold">
-              Join us
-            </button>
-          </div>
+      
         </div>
-      </div>
+    </div>
     </>
   );
 }
