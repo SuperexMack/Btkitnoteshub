@@ -12,7 +12,7 @@ router.get("/getalldata" , async(req,res)=>{
         })
     }
     catch(error){
-        res.json({msg : "unable to find out data"})
+        return res.json({msg : "unable to find out data"})
     }
 })
 

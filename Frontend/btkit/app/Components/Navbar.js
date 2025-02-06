@@ -5,16 +5,20 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { ToastContainer, toast } from 'react-toastify';
 import { useRouter } from "next/router";
+import { jwtDecode } from "jwt-decode"; 
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [check,setCheck] =  useState(false)
+  const [userid,setUserid] = useState(null)
 
   // const router = useRouter()
 
+
   useEffect(()=>{
     let checkLocalStorage = localStorage.getItem("authorization")
-
+    let secuserid = jwtDecode(checkLocalStorage)
+    setUserid(secuserid.getUserId)
     if(checkLocalStorage && checkLocalStorage !== undefined) setCheck(true) 
   },[])
 
@@ -46,7 +50,7 @@ export function Navbar() {
         <div className="hidden md:flex space-x-8 absolute right-[10%] list-none">
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Home</li></Link>
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contact</li></Link>
-          <Link href={"/myprofile"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">My Profile</li></Link>
+          <Link href={`/myprofile/${userid}`}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">My Profile</li></Link>
           <Link href={"/feed"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Posts Section</li></Link>
           <Link href={"/addnotes"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contribute</li></Link>
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Notes Section</li></Link>

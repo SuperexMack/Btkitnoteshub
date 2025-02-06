@@ -24,20 +24,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar></Navbar>
-        <div className="absolute inset-0 w-full h-full">
-          <div className="h-full w-full grid grid-cols-[repeat(24,1fr)] gap-1 md:gap-2">
-            {Array.from({ length: 24 }).map((_, i) => (
-              <div key={i} className="border-r border-gray-800/40 h-full"></div>
-            ))}
-          </div>
-          <div className="absolute inset-0">
-            <div className="h-full w-full grid grid-rows-[repeat(24,1fr)] gap-1 md:gap-2">
-              {Array.from({ length: 24 }).map((_, i) => (
-                <div key={i} className="border-b border-gray-800/40 w-full"></div>
-              ))}
-            </div>
-          </div>
-        </div>
+       
         {children}
       </body>
     </html>

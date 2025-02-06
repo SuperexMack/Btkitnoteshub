@@ -28,4 +28,25 @@ router.post("/getuserdata" , async(req,res)=>{
     }
 })
 
+router.get("/getuser/:id" , async(req,res)=>{
+    
+    try{
+
+        let username = parseInt(req.params.id)
+        let getUserName = await Prisma.user.findFirst({
+            where:{
+                id:username
+            }
+        }) 
+        if(getUserName){
+            return res.json({userdata:getUserName})
+        }
+    }
+
+    catch(error){
+        console.log("Something went wrong while finding the users " + error)
+        return res.json({msg : "Something went wrong while finding the users"})
+    }
+})
+
 module.exports = router

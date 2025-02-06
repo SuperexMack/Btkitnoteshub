@@ -45,5 +45,6 @@ model userPost{
 
 model fans{
   id Int @id @default(autoincrement())
-  
+  following Int
+  followedby Int
 }
