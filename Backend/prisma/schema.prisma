@@ -40,6 +40,7 @@ model userPost{
   postedBy String
   authorofpost User @relation(fields: [postId] ,references: [id])
   postId Int
+  othersComment comments[]
 }
 
 
@@ -47,4 +48,13 @@ model fans{
   id Int @id @default(autoincrement())
   following Int
   followedby Int
+}
+
+
+model comments{
+ commentid Int @id @default(autoincrement())
+ commentTitle String
+ commentAddedBy Int
+ commentrel userPost @relation(fields: [commentsid] , references: [id])
+ commentsid Int
 }
