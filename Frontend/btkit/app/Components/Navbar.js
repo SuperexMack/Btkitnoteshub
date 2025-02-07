@@ -38,8 +38,8 @@ export function Navbar() {
     <>
       <div className="bg-slate-100 border-2 z-20 border-slate-200 h-[100px] w-full flex items-center fixed">
         <div className="relative left-4 md:left-[15%]">
-          <h1 className="font-bold text-[30px] md:text-[40px] bg-gradient-to-r from-violet-700 via-purple-700 to-orange-500 bg-clip-text text-transparent">
-            Btkit Springs
+          <h1 className="font-bold text-[30px] md:text-[30px] bg-gradient-to-r from-violet-700 via-purple-700 to-orange-500 bg-clip-text text-transparent">
+            BTKIT Springs
           </h1>
         </div>
 

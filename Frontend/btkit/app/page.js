@@ -17,7 +17,7 @@ export default function Home() {
 
         <div className="w-[80%] flex justify-center items-center sm:w-[60%] md:w-[50%]">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900">
-            A social media platform for <span className="text-purple-600">BTKIT students</span>
+            A Social Media Platform For <span className="text-purple-600">BTKIT Students</span>
           </h1>
         </div>
 
