@@ -12,8 +12,8 @@ export function SiteFooter() {
                         <div className="h-[70px] w-[70px] flex justify-around">
                             <Image src={myimage} className="h-full w-full rounded-full" alt="my_img" />
                         </div>
-                        <h1 className="font-bold text-[30px] text-blue-600 hover:cursor-pointer">
-                            BTKIT <span className='bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent hover:border-b-2 border-orange-500'>Springs</span>
+                        <h1 className="font-bold text-[30px] bg-gradient-to-r from-gray-700 via-slate-400 to-slate-800 bg-clip-text text-transparent hover:cursor-pointer">
+                            BTKIT <span className='bg-gradient-to-r from-gray-700 via-slate-400 to-slate-800 bg-clip-text text-transparent hover:border-b-2 border-orange-500'>Springs</span>
                         </h1>
                     </div>
                     <p className="text-gray-800 max-w-[300px]">
