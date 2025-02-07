@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import newSocial from "./newSocial.png";
 import { Github, Linkedin, Instagram, Twitter } from 'lucide-react';
 import Link from "next/link";
+import { SiteFooter } from "./Components/Footer";
 
 export default function Home() {
   return (
@@ -65,6 +66,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <SiteFooter></SiteFooter>
     </div>
   );
 }
