@@ -1,4 +1,4 @@
-import myimage from "./mylufi.jpeg";
+import myimage from "./btkitll.png";
 import Image from "next/image";
 import { Github, Instagram, Linkedin, Twitter, Mail, Phone } from 'lucide-react';
 import Link from "next/link";
