@@ -53,7 +53,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="w-full flex justify-center items-center mt-8 space-x-12">
-              <Link href={"https://www.instagram.com/dp_127.0.0.1/?next=%2F"}><span h>
+              <Link href={"https://www.instagram.com/dp_127.0.0.1/?next=%2F"}><span>
                 <Instagram className="h-12 w-12 animate-bounce cursor-pointer text-pink-600 hover:text-pink-700 transition-all duration-300" />
               </span>
               </Link>

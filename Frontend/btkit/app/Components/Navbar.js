@@ -17,9 +17,12 @@ export function Navbar() {
 
   useEffect(()=>{
     let checkLocalStorage = localStorage.getItem("authorization")
-    let secuserid = jwtDecode(checkLocalStorage)
-    setUserid(secuserid.getUserId)
-    if(checkLocalStorage && checkLocalStorage !== undefined) setCheck(true) 
+    if(checkLocalStorage){
+      let secuserid = jwtDecode(checkLocalStorage)
+      setUserid(secuserid.getUserId)
+      if(checkLocalStorage && checkLocalStorage !== undefined) setCheck(true) 
+    }
+    
   },[])
 
 
