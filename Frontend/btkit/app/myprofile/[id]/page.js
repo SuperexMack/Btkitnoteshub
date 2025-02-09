@@ -6,11 +6,31 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { useParams } from 'next/navigation'
 import { ToastContainer,toast } from "react-toastify"
+import { jwtDecode } from "jwt-decode"
 
 export default function Profile() {
 
   const params = useParams()
   const { id } = params
+  const [sameAccount,setSameAccount] = useState(true)
+
+
+  useEffect(()=>{
+    console.log("mai aandar hun ")
+    let findToken = localStorage.getItem("authorization")
+    if(findToken){
+      let extract = jwtDecode(findToken)
+      let getId = extract.getUserId
+      // console.log("Get id is " + getId)
+      // console.log("Value of id is " + id)
+      // console.log("type of getid is " + typeof getId)
+      // console.log("Type of id id " + typeof id)
+      if(getId==id){
+        setSameAccount(false)
+      }
+      console.log("value of sameAccount is " + sameAccount)
+    }
+  },[])
 
   const [allusers, setAllusers] = useState([])
   const [loading,setLoading] = useState(false)
@@ -18,8 +38,8 @@ export default function Profile() {
   const [email,setEmail] = useState("")
   const [peopleFollowme , setPeoplefollowme] = useState("")
   const [peopleiamfollowing,setiamfollowing] = useState("")
-  const [fans,setFans] = useState([])
   const [loadingFan , setFan]= useState(false)
+  
 
   useEffect(() => {
     const userInfo = async () => {
@@ -149,11 +169,14 @@ export default function Profile() {
               </div>
 
               
+              
               <div className="px-6 pb-8">
-                <button onClick={followingLogic} className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
+                <button onClick={followingLogic} className={`${sameAccount?"w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition":"hidden"}`}>
                   {loadingFan?"Loading.....":"Follow"}
                 </button>
               </div>
+
+
             </div>
           </div>
 

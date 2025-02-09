@@ -10,8 +10,14 @@ router.post("/follow" , middleWare , async(req,res)=>{
 
     try{
 
+
+        
+
         let following = parseInt(req.body.following)
+
+
         // Checking that already followed or not
+        
         
         let checkFollower = await Prisma.fans.findFirst({
             where:{
