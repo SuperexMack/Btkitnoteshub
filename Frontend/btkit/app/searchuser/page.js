@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { ArrowUpRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 export default function(){
     const [users,getUsers] = useState([])
@@ -15,7 +16,7 @@ export default function(){
         .then((response)=>{
             getUsers(response.data.allofmyusers)
             console.log("mil gya hai data")
-            // console.log(response.data.allofmyusers)
+            console.log(response.data.allofmyusers)
             
         })
         .catch((error)=>{
@@ -53,7 +54,7 @@ export default function(){
                         <div key={index} className='flex flex-col space-y-6'>
                           <div className='flex space-x-3'>
                           <span><ArrowUpRight className='text-slate-500 font-medium md:text-[30px] sm:text-[25px]'></ArrowUpRight></span> 
-                          <h1 className='text-[20px] font-medium md:text-[30px] sm:text-[25px]'>{value.username}</h1>
+                          <Link href={`http://localhost:3000/myprofile/${value.id}`}><h1 className='text-[20px] font-medium md:text-[30px] sm:text-[25px]'>{value.username}</h1></Link>
                           </div>
                         </div>
                        ))

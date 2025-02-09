@@ -3,6 +3,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { MessagesSquare } from 'lucide-react'
+import Link from "next/link"
 
 export default function() {
     const [backendData, setBackendData] = useState([])
@@ -54,7 +55,7 @@ export default function() {
                         
                         <div className="p-3 space-y-2">
                             <div className="flex items-center space-x-2">
-                                <MessagesSquare className="w-6 h-6 text-gray-700" />
+                                <Link href={`http://localhost:3000/comment/${userinfo.id}`}><MessagesSquare className="w-6 h-6 text-gray-700" /></Link>
                             </div>
                             
                             <div className="space-y-1">
