@@ -4,16 +4,16 @@ const middleware = require("../Middlewares/dataMiddle")
 const { PrismaClient } = require('@prisma/client')
 const Prisma = new PrismaClient()
 
-router.post("/postcomment" ,middleware,async(req,res)=>{
-    let getverifcationData = req.userId
-    if(!getverifcationData) return res.json({msg : "Plese Login/register first"})
+router.post("/postcomment",async(req,res)=>{
+   console.log("ham aaye postcomment ke aandar")
     try{
-        let getpostid = req.body.postid
+        let getpostid = parseInt(req.body.postid)
         let comment = req.body.comment
+        let getcommentid = parseInt(req.body.commentpersonid)
         let storeComment = await Prisma.comments.create({
             data:{
                 commentTitle:comment,
-                commentAddedBy : getverifcationData,
+                commentAddedBy : getcommentid,
                 commentsid:getpostid
             }
         })
@@ -28,10 +28,10 @@ router.post("/postcomment" ,middleware,async(req,res)=>{
     
 })
 
-router.get("/getcomment" , async(req,res)=>{
+router.get("/getcomment/:id" , async(req,res)=>{
     
     try{
-    let allcomments = req.body.commentid
+    let allcomments = parseInt(req.params.id)
       let findComments = await Prisma.comments.findMany({
         where:{
             commentsid:allcomments

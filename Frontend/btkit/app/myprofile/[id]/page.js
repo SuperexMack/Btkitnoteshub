@@ -5,6 +5,7 @@ import google from "./googleimg.png"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { useParams } from 'next/navigation'
+import { ToastContainer,toast } from "react-toastify"
 
 export default function Profile() {
 
@@ -18,6 +19,7 @@ export default function Profile() {
   const [peopleFollowme , setPeoplefollowme] = useState("")
   const [peopleiamfollowing,setiamfollowing] = useState("")
   const [fans,setFans] = useState([])
+  const [loadingFan , setFan]= useState(false)
 
   useEffect(() => {
     const userInfo = async () => {
@@ -57,9 +59,41 @@ export default function Profile() {
   }
 
 
+
+  // Follow and unFollow logic
+
+  const followingLogic = async()=>{
+    let getToken = localStorage.getItem("authorization")
+    if(getToken==null) return toast.error("You are not the real owner of this account")
+    setFan(true)
+    await axios.post("http://localhost:2000/v1/fans/follow",{
+      following : id
+    },
+    {headers:{
+      Authorization: getToken
+    }
+
+    })
+    .then((response)=>{
+      console.log("kar diya follow")
+      toast.success(response.data.msg)
+      setFan(false)
+    })
+    .catch((error)=>{
+
+      console.log("Something went wrong while following " + error)
+      toast.error("Something went wrong while following the user")
+      setFan(false)
+    })
+    
+  }
+
   useState(()=>{
     getFans()
   },[peopleFollowme,peopleiamfollowing])
+
+
+
 
   return (
     <>
@@ -116,8 +150,8 @@ export default function Profile() {
 
               
               <div className="px-6 pb-8">
-                <button className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
-                  Follow
+                <button onClick={followingLogic} className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
+                  {loadingFan?"Loading.....":"Follow"}
                 </button>
               </div>
             </div>
@@ -138,6 +172,7 @@ export default function Profile() {
           </div>
         </div>
       </div>
+      <ToastContainer/>
       </>
     )}
      

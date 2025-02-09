@@ -10,17 +10,28 @@ router.post("/follow" , middleWare , async(req,res)=>{
 
     try{
 
-        let following = req.body.following
+        let following = parseInt(req.body.following)
         // Checking that already followed or not
         
         let checkFollower = await Prisma.fans.findFirst({
-            data:{
+            where:{
                 following,
                 followedby:getverifcationData
             }
         })
+         
+        if(checkFollower){
+            await Prisma.fans.deleteMany({
+                where:{
+                following,
+                followedby:getverifcationData
+                }
+            })
 
-        if(checkFollower) return res.json({msg:"You are already following this user"})
+            return res.json({msg : "Unfollowed"})
+        }
+
+        
 
         await Prisma.fans.create({
             data:{
@@ -32,7 +43,7 @@ router.post("/follow" , middleWare , async(req,res)=>{
     }
 
     catch(error){
-        console.log("Something went wrong whole f")
+        console.log("Something went wrong whole following" + error)
     }
 })
 
