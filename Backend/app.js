@@ -9,6 +9,7 @@ const alldata = require("./Controllers/getpostdata")
 const getUsers = require("./Controllers/getuser")
 const fans = require("./Controllers/fanLogic")
 const comments = require("./Controllers/addComment")
+const getpdfData = require("./Controllers/pdfData")
 const cors = require("cors")
 
 app.use(cors({
@@ -26,6 +27,7 @@ app.use("/v1/post" , alldata)
 app.use("/v1/getusers" , getUsers)
 app.use("/v1/fans" , fans)
 app.use("/v1/comment" , comments)
+app.use("/v1/getnotesdata",getpdfData)
 app.get("/", (req,res)=>{
     return res.json({msg : "Welcome to the v1 of the btkit website"});
 })
