@@ -7,6 +7,7 @@ import axios from "axios"
 import { useParams } from 'next/navigation'
 import { ToastContainer,toast } from "react-toastify"
 import { jwtDecode } from "jwt-decode"
+import Link from "next/link"
 
 export default function Profile() {
 
@@ -74,7 +75,7 @@ export default function Profile() {
 
     })
     .catch((error)=>{
-      console.log("There is some error while finding fans")
+      console.log("There is some error while finding fans" + error)
     })
   }
 
@@ -160,9 +161,9 @@ export default function Profile() {
 
              
               <div className="flex justify-center space-x-4 mt-6 pb-6">
-                <button className="bg-gray-200 text-purple-600 px-4 py-2 rounded-lg hover:bg-gray-300 transition">
+                <Link href={"/update"}><button className={`${sameAccount?"hidden" : "bg-gray-200 text-purple-600 px-4 py-2 rounded-lg hover:bg-gray-300 transition"}`}>
                   Edit Profile
-                </button>
+                </button></Link>
                 <button className="bg-gray-200 text-purple-600 px-4 py-2 rounded-lg hover:bg-gray-300 transition">
                   Share Profile
                 </button>
@@ -182,15 +183,10 @@ export default function Profile() {
 
          
           <div className="max-w-2xl mx-auto mt-8 bg-white shadow-lg rounded-2xl p-6">
-            <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Your Contributions</h2>
+            <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">User's Contributions</h2>
             
-            <div className="space-y-4">
-              <div className="bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">
-                <h3 className="text-center">Title: This side Mack Walker and I am very happy today</h3>
-              </div>
-              <div className="bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">
-                <h3 className="text-center">Title: This side Mack Walker and I am very happy today</h3>
-              </div>
+            <div className="space-y-4 flex justify-center items-center">
+             <h1>Will add it in the next version</h1>
             </div>
           </div>
         </div>
