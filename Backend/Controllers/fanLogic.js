@@ -99,4 +99,22 @@ router.post("/countFollowers" , async(req,res)=>{
     }
 })
 
+router.post("/followingtag" , async(req,res)=>{
+    let getcheckerid = parseInt(req.body.getcheckerid)
+    let getvisitid = parseInt(req.body.getvisitid)
+    try{
+      let findfollowingdata = await Prisma.fans.findFirst({
+        where:{
+            following : getvisitid,
+            followedby: getcheckerid
+        }
+      })
+      if(findfollowingdata) return res.json({msg:"Following"})
+    }
+    catch(error){
+        console.log("Something went wrong while finding the following box " + error)
+        return res.json({msg:"Something went wrong"})
+    }
+})
+
 module.exports = router

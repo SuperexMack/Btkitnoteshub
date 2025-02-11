@@ -40,6 +40,8 @@ export default function Profile() {
   const [peopleFollowme , setPeoplefollowme] = useState("")
   const [peopleiamfollowing,setiamfollowing] = useState("")
   const [loadingFan , setFan]= useState(false)
+  const [followingbox,setFollowingBox] = useState("Follow")
+  const [decideColor,setDecideColor] = useState("bg-purple-600")
   
 
   useEffect(() => {
@@ -109,6 +111,37 @@ export default function Profile() {
     
   }
 
+
+  // using the below code we can find that the user is already following or not
+  //  and due to this we will change the box of following
+
+  const changeBox = async()=>{
+    let findToken = localStorage.getItem("authorization")
+    let getId;
+    if(findToken){
+      let extract = jwtDecode(findToken)
+      getId = extract.getUserId
+    }
+    await axios.post("http://localhost:2000/v1/fans/followingtag",{
+      getcheckerid:getId,
+      getvisitid:id
+    })
+    .then((response)=>{
+      setFollowingBox(response.data.msg)
+      if(response.data.msg == "Following") setDecideColor("bg-red-600")
+    })
+    .catch((error)=>{
+
+      toast.error("Something went wrong please refresh the page")
+      console.log("Something went wrong " + error)
+    })
+  }
+
+
+  useEffect(()=>{
+    changeBox()
+  },[id])
+
   useState(()=>{
     getFans()
   },[peopleFollowme,peopleiamfollowing])
@@ -172,8 +205,8 @@ export default function Profile() {
               
               
               <div className="px-6 pb-8">
-                <button onClick={followingLogic} className={`${sameAccount?"w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition":"hidden"}`}>
-                  {loadingFan?"Loading.....":"Follow"}
+                <button onClick={followingLogic} className={`${sameAccount?`w-full ${decideColor} text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition`:"hidden"}`}>
+                  {loadingFan?"Loading.....":followingbox}
                 </button>
               </div>
 
