@@ -9,6 +9,7 @@ export default function() {
     const [summary, setSummary] = useState("")
     const [fileo , setFile] = useState("")
     const [year ,setYear] = useState("")
+    const [loading , setLoading] = useState(false)
     const myRef = useRef(null)
 
     const changeRef = ()=>{
@@ -30,7 +31,11 @@ export default function() {
 
 
     const addData = async()=>{
+        if(!summary.trim()) return toast.error("Please Enter the summary")
+        if(!title.trim()) return toast.error("Please Enter the title")
+        if(!year.trim()) return toast.error("Please Enter the year")
         let getToken = localStorage.getItem("authorization")
+        setLoading(true)
         await axios.post("http://localhost:2000/v1/addData/postdata" , {
             title,
             summary,
@@ -47,6 +52,7 @@ export default function() {
           setYear("")
           setFile("")
           toast.success(response.data.msg)
+          setLoading(false)
         })
         .catch((error)=>{
             toast.error(error)
@@ -82,14 +88,9 @@ export default function() {
         <>
         <div className="w-full min-h-screen flex flex-col bg-gradient-to-br from-indigo-50 to-purple-50">
             <div className="min-h-screen w-full flex flex-col space-y-6 justify-center items-center z-10 px-4 py-8">
-                <div className="w-full flex justify-center items-center flex-col space-y-6">
-                    <h1 className="font-bold text-3xl md:text-4xl lg:text-[50px] mt-4 cursor-pointer animate-bounce text-violet-800">
-                        Submit Notes 👇 <br className="md:hidden" />
-                        <span className="text-xl md:text-2xl lg:text-3xl">(कोई इंतज़ार कर रहा है।)</span>
-                    </h1>
-                </div>
+                
                 <div className="w-full h-auto flex justify-center items-center">
-                    <div className="bg-white shadow-2xl w-full md:w-[80%] lg:w-[50%] h-auto rounded-lg z-10 flex flex-col items-center space-y-7 p-4">
+                    <div className="bg-white mt-[60px] shadow-2xl w-full md:w-[80%] lg:w-[50%] h-auto rounded-lg z-10 flex flex-col items-center space-y-7 p-4">
                         <div className="w-full md:w-[80%] lg:w-[70%] flex flex-col space-y-4 mt-5">
                             <div className="flex space-x-5">
                                 <Sparkles className="text-lg md:text-[25px] mt-1 text-violet-600" />
@@ -146,7 +147,7 @@ export default function() {
 
                         <div className="w-full mt-8 flex justify-center">
                             <button onClick={addData} className="bg-violet-600 p-4 w-full md:w-[80%] lg:w-[70%] rounded-xl text-lg md:text-[20px] text-white font-bold hover:bg-violet-700 transition-colors">
-                                Submit Notes
+                                {loading?"Loading.....":"Submit Notes"}
                             </button>
                         </div>
                     </div>

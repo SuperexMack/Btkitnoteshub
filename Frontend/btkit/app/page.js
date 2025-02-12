@@ -29,7 +29,7 @@ export default function Home() {
 
         <div className="w-full flex justify-center items-center">
           <button className="flex items-center space-x-2 bg-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 transform hover:scale-105">
-            <span className="font-bold text-lg">Explore</span>
+           <Link href={"/feed"}><span className="font-bold text-lg">Explore</span></Link> 
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>

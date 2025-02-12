@@ -8,8 +8,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import googleImage from "../googleimg.png";
+import { useRouter } from 'next/navigation';
 
 export default function Signin() {
+
+  const router = useRouter()
+
+
   const [isLoading, setIsLoading] = useState(false);
 
   const AuthenticatUser = async (credentialResponse) => {
@@ -22,6 +27,7 @@ export default function Signin() {
       
       if (response.data.token) {
         toast.success(response.data.msg);
+        setTimeout(()=>router.push("/") , 2000)
         return localStorage.setItem("authorization", `Bearer ${response.data.token}`);
       } else {
         toast.error("Authentication failed. Please contact support.");
@@ -38,7 +44,7 @@ export default function Signin() {
       <div className="w-full max-w-md bg-white shadow-2xl rounded-2xl border border-gray-100 p-8 space-y-6 transform transition-all duration-300 hover:scale-105">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-6">
-            Student Signup
+            Student Signin
           </h1>
           
           <div className="flex justify-center mb-6">

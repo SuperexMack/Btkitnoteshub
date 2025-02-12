@@ -84,15 +84,17 @@ export default function() {
             <div className="max-w-4xl mx-auto pt-20 px-4">
                 {/* Main Post Image */}
                 <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div className="w-[80%] h-[400px] mx-auto sm:w-[50%] md:w-[40%] lg:w-[30%] lg:h-[450px]">
+                    <div className="w-[80%] h-[400px] mx-auto sm:w-[50%] md:w-[40%] lg:w-[30%] lg:h-[400px] mt-[150px]">
                         {userPhoto ? (
                             <Image 
                                 width={16}
                                 height={9}
                                 src={userPhoto}
-                                className="h-full w-full rounded-lg object-cover"
+                                className="h-full w-[500px] rounded-lg"
                                 alt="post_photo"
+                                layout="responsive"
                             />
+                            
                         ) : (
                             <div className="flex items-center justify-center h-full bg-gray-100">
                                 <p className="text-gray-500 font-medium">Loading image...</p>

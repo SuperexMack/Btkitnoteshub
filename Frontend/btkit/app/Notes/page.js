@@ -53,8 +53,7 @@ export default function(){
           {getpdfData.length > 0 ? (getpdfData.map((value, index) => (
           <div key={index} className="flex flex-col mt-[50px] space-y-4  w-full h-auto items-center p-2">
       <div className="bg-slate-300 rounded-lg w-[80%] h-[300px] sm:w-[70%] sm:h-[400px] md:w-[40%] md:h-[460px]">
-        <iframe src={value.fileo} className="w-full h-full rounded-lg shadow-lg"></iframe>
-      </div>
+      <iframe src={value.fileo} type="application/pdf" width="100%" height="100%" onError={(e) => console.error('Error loading PDF', e)}></iframe>      </div>
 
       <div className="flex space-x-2 items-center justify-center">
         <Book />
@@ -75,7 +74,7 @@ export default function(){
     </div>
     ))
    ) : (
-    <h1 className="text-[30px] font-bold mt-[50%]">Data will be available here....</h1>
+    <h1 className="md:text-[30px] text-[25px] font-bold mt-[3%]">Data will be available here....</h1>
    )}
 
 

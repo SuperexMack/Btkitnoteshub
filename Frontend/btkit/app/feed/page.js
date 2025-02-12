@@ -14,7 +14,7 @@ export default function() {
             setLoading(true)
             await axios.get("http://localhost:2000/v1/post/getalldata")
             .then((response) => {
-                setBackendData(response.data.alldata)
+                setBackendData([...response.data.alldata].reverse())
                 console.log("mil gya data")
                 setLoading(false)
             })

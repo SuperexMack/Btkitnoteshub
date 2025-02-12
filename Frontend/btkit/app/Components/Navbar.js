@@ -23,13 +23,12 @@ export function Navbar() {
       if(checkLocalStorage && checkLocalStorage !== undefined) setCheck(true) 
     }
     
-  },[])
+  },[userid])
 
 
   const logout = ()=>{
     localStorage.removeItem("authorization")
     toast.success("Successfully logged out")
-
   }
   
   
@@ -37,7 +36,7 @@ export function Navbar() {
   return (
     <>
       <div className="bg-slate-100  z-20 h-[100px] w-full flex items-center fixed">
-        <div className="relative left-4 md:left-[15%]">
+        <div className="relative left-4 md:left-[5%]">
           <h1 className="font-bold text-[30px] md:text-[30px] bg-gradient-to-r from-gray-700 via-slate-400 to-slate-800 bg-clip-text text-transparent">
             BTKIT Springs
           </h1>
@@ -50,15 +49,21 @@ export function Navbar() {
           {isOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
 
-        <div className="hidden md:flex space-x-8 absolute right-[10%] list-none">
+        <div className="hidden md:flex space-x-8 absolute right-[2%] list-none ">
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Home</li></Link>
           <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contact</li></Link>
-          <Link href={`/myprofile/${userid}`}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">My Profile</li></Link>
-          <Link href={"/feed"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Posts Section</li></Link>
+
+          {check?(<><Link href={`/myprofile/${userid}`}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">My Profile</li></Link>
+            </>):(<></>)}
           <Link href={"/addnotes"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contribute</li></Link>
-          <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Notes Section</li></Link>
+          <Link href={"/searchuser"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Explore</li></Link>
+          <Link href={"/feed"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Feed</li></Link>
+          <Link href={"/userpost"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Post</li></Link>
+
+         
+          <Link href={"/Notes"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Notes Section</li></Link>
           {check ? (
-          <li onClick={logout} className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Logout</li>
+          <li onClick={logout} className="text-[20px] hover:cursor-pointer font-bold text-slate-500 hover:text-slate-950">Logout</li>
           ) :(
             <>
           <Link href={"/Signup"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Signup</li></Link>
@@ -70,13 +75,25 @@ export function Navbar() {
 
         <div className={`fixed md:hidden top-[100px] right-0 h-screen w-full bg-slate-100 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           <div className="flex flex-col items-center space-y-8 pt-8 list-none">
-            <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Home</li></Link>
-            <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contact</li></Link>
-            <Link href={"/myprofile"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">My Profile</li></Link>
-            <Link href={"/addnotes"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contribute</li></Link>
-            <Link href={"/"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Notes Section</li></Link>
-            <Link href={"/Signup"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Signup</li></Link>
-            <Link href={"/Signin"} onClick={() => setIsOpen(false)}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Login</li></Link>
+          <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Home</li></Link>
+          <Link href={"/"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contact</li></Link>
+          <Link href={`/myprofile/${userid}`}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">My Profile</li></Link>
+          <Link href={"/addnotes"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Contribute</li></Link>
+          <Link href={"/searchuser"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Explore</li></Link>
+          <Link href={"/feed"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Feed</li></Link>
+          <Link href={"/userpost"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Post</li></Link>
+
+         
+          <Link href={"/Notes"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Notes Section</li></Link>
+          {check ? (
+          <li onClick={logout} className="text-[20px] hover:cursor-pointer font-bold text-slate-500 hover:text-slate-950">Logout</li>
+          ) :(
+            <>
+          <Link href={"/Signup"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Signup</li></Link>
+          <Link href={"/Signin"}><li className="text-[20px] font-bold text-slate-500 hover:text-slate-950">Login</li></Link>
+          </>
+          )  
+        }
           </div>
         </div>
       </div>

@@ -40,6 +40,11 @@ export default function() {
     const postKaro = async()=>{
         setLoading(true)
         let token = localStorage.getItem("authorization")
+        if(!token){
+            toast.error("Kindly login to Post")
+            setTimeout(()=>reef.push("/Signin"),2000)
+            return 
+        }
         await axios.post("http://localhost:2000/v1/postkaro/postdaily" , {
           title,
           postPhoto:myfile
@@ -49,8 +54,9 @@ export default function() {
             }
         })
         .then((response)=>{
-            toast.success(response.data.msg)
             setLoading(false)
+            toast.success(response.data.msg)
+            setTimeout(()=>reef.push("/feed"),2000)
         })
         .catch((error)=>{
             console.log("Post error" + error)
@@ -64,20 +70,20 @@ export default function() {
         <>
         {loading ? (
            <div className="flex justify-center items-center h-screen w-full">
-           <div className="w-[70px] h-[70px]  border-4 border-blue-600 animate-spin rounded-3xl">
+           <div className="w-[70px] h-[70px] border-4 border-t-white border-purple-600 animate-spin rounded-full">
               
            </div>
          </div>
         ) : (
             <>
            <div className="w-full  min-h-screen flex flex-col justify-center items-center bg-gray-50 p-4">
-            <div className="w-full z-10 max-w-4xl h-auto md:h-[500px] flex flex-col md:flex-row justify-center items-center bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="w-full z-10 max-w-4xl h-auto md:h-[500px] border-2 border-slate-300 flex flex-col md:flex-row justify-center items-center bg-white rounded-lg shadow-lg overflow-hidden">
                <div className="w-full md:w-[40%] h-64 md:h-full flex justify-center items-center bg-gray-100 p-4">
                 {/* {check ?(
                    <Image src={myfile} className="h-full w-full" alt="post_photo"></Image>
                 ) : ( */}
                     <h1 className="font-medium text-xl md:text-2xl text-gray-700 text-center">
-                    Your photo will be visible here
+                    Your photo will be visible here in V2
                 </h1>
                 {/* )}
                     */}
@@ -101,9 +107,9 @@ export default function() {
                    </div>
                </div>
             </div>
-            
+            <ToastContainer/>
         </div>
-        <ToastContainer/>
+       
         </>
         )}
        

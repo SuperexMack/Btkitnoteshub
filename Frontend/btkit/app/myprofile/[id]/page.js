@@ -140,7 +140,7 @@ export default function Profile() {
 
   useEffect(()=>{
     changeBox()
-  },[id])
+  },[id,decideColor,followingbox])
 
   useState(()=>{
     getFans()

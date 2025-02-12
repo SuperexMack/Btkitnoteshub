@@ -28,7 +28,7 @@ router.post("/postdata" ,middleware,async(req,res)=>{
     const uploadResult = await cloudinary.uploader.upload(fileo ,{
         folder: "btkit",  
         use_filename: true, 
-        unique_filename: true,  
+        unique_filename: true,   
     })
     .catch((error) => {
         console.log(error);
