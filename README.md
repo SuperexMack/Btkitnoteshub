@@ -93,6 +93,6 @@ BTKIT Springs isn't just a platform - it's our digital campus space. Let's make 
 
 <div align="center">
 
-Made with ❤️ by BTKITians
+Made with ❤️ by Mohit Sati (AirDrop)
 
 </div>
