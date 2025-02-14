@@ -2,7 +2,7 @@
 
 # 🚀 BTKIT Springs
 
-Connect. Share. Thrive.
+Connect. Share. Thrive
 
 Your exclusive social platform for BTKIT - where college life comes alive! 🎓✨
 
